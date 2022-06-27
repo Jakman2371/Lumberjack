@@ -4,9 +4,9 @@ class Play extends Phaser.Scene {
     }
     preload() {
         this.load.image('rocket', './assets/axe.png');
-        this.load.spritesheet('spaceship', './assets/dialup-Sheet.png', {frameWidth: 95, frameHeight:47, startFrame: 0, endFrame: 5});
-        this.load.image('payphones', './assets/payphones.png');
-        this.load.spritesheet('explosion', './assets/hearteffect.png', {frameWidth: 110, frameHeight:54, startFrame: 0, endFrame: 5});
+        this.load.spritesheet('spaceship', './assets/logSheet.png', {frameWidth: 95, frameHeight:47, startFrame: 0, endFrame: 5});
+        this.load.image('gameBG', './assets/gameBG.png');
+        this.load.spritesheet('explosion', './assets/logExplosion.png', {frameWidth: 110, frameHeight:54, startFrame: 0, endFrame: 5});
 
     }
     create() {
@@ -16,7 +16,7 @@ class Play extends Phaser.Scene {
         this.add.rectangle(0, game.config.height - borderUISize, game.config.width, borderUISize, 0xFFFFFF).setOrigin(0,0);
         this.add.rectangle(0,0, borderUISize,game.config.height, 0xFFFFFF).setOrigin(0,0);
         this.add.rectangle(game.config.width - borderUISize, 0, borderUISize, game.config.height, 0xFFFFFF).setOrigin(0,0);
-        this.payphones = this.add.tileSprite(0,0,640,480, 'payphones').setOrigin(0,0);
+        this.gameBG = this.add.tileSprite(0,0,640,480, 'gameBG').setOrigin(0,0);
         this.p1Rocket = new Rocket(this, game.config.width/2, game.config.height - borderUISize - borderPadding, 'rocket').setOrigin(0.5, 0);
         
         this.anims.create({
@@ -86,7 +86,7 @@ class Play extends Phaser.Scene {
         }
 
 
-        this.payphones.tilePositionX -= 4;
+        this.gameBG.tilePositionX -= 4;
         if (!this.gameOver) {
             this.p1Rocket.update();
             this.ship01.update();
